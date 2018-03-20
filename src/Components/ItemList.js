@@ -1,31 +1,42 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Item from './Item';
+import { Table } from 'react-bootstrap';
 
-export default class ItemList extends Component{
+const ItemList = ({itemList, handleDeleteItem}) => {
 
-  handleDeleteItem(id){
-    this.props.handleDelete(id)
+  const deleteItem = (i) => (event) => {
+    event.preventDefault();
+    console.log("clicked onDelete---", i);
+    handleDeleteItem(i);
+  };
+
+  let items;
+  if(itemList){
+    items = itemList.map((item,i)=>{
+      return(
+        <Item key={i} item={item} handleClick={deleteItem(i)} />
+      );
+    });
   }
 
-  render(){
-    console.log("these are the props.itemList--->", this.props.itemList);
-    let items;
-    if(this.props.itemList){
-      items = this.props.itemList.map((stuff,idx)=>{
-        return(
-          <Item
-            key={idx}
-            item={stuff}
-            deleteItem={this.handleDeleteItem.bind(this)}
-          />
-        )
-      })
-    }
-    return(
-      <div className="ItemList">
-        <h3>Inventory</h3>
-        {items}
-      </div>
-    )
-  }
+  return(
+    <div className="ItemList">
+      <h3>Inventory</h3>
+      <Table striped bordered condensed hover>
+        <thead>
+          <tr>
+            <th>Item Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {items}
+          </tbody>
+      </Table>
+    </div>
+  )
 }
+
+export default ItemList;

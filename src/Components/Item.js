@@ -1,21 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Button } from 'react-bootstrap';
 
-export default class Item extends Component{
-  onDelete(id){
-    this.props.deleteItem(id);
-  }
+const Item = ({item, handleClick}) => {
 
-  render(){
-    console.log("this was passed through--->",this.props.item);
-    return(
-      <div className="Items">
-          <li>{this.props.item.x.idx}</li>
-          <li>Item Name: {this.props.item.x.itemName}</li>
-          <li>Price: {this.props.item.x.itemPrice}</li>
-          <li>Quantity: {this.props.item.x.quantity}</li>
-          <li><a href="#" onClick={this.onDelete.bind(this,this.props.item.id)}>Delete</a></li>
-          <br />
-      </div>
-    )
-  }
+  return(
+    <tr>
+      <td>{item.name}</td>
+      <td>{item.price}</td>
+      <td>{item.quantity} </td>
+      <td><Button type="button" bsStyle="danger" onClick={handleClick}>Delete</Button></td>
+    </tr>
+  )
 }
+ export default Item;

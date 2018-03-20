@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import uuid from 'uuid';
+import { Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 export default class AddItem extends Component{
   constructor(){
@@ -8,16 +9,15 @@ export default class AddItem extends Component{
       newItems:[]
     }
   }
-  handleSubmit(e){
+  handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submitted this new item--->",this.refs.itemName.value);
-    if(this.refs.itemName.value === ""){
+    console.log("submitted this new item--->",this.refs.name.value);
+    if(this.refs.name.value === ""){
       alert("Item can't be blank")
     }else{
       this.setState({newItems:{
-          id: uuid.v4(),
-          itemName: this.refs.itemName.value,
-          itemPrice: this.refs.itemPrice.value,
+          name: this.refs.name.value,
+          price: this.refs.price.value,
           quantity: this.refs.quantity.value
         }},
         function(){
@@ -30,22 +30,28 @@ export default class AddItem extends Component{
   render(){
     return(
       <div>
-        <form onSubmit={this.handleSubmit.bind(this)}>
+        <form onSubmit={this.handleSubmit}>
           <div>
             <label >Item Name </label>
-            <input ref="itemName" name="itemName" type="text"></input>
+            <input ref="name" name="name" type="text"></input>
           </div>
           <div>
             <label >Item Price </label>
-            <input ref="itemPrice" name="itemPrice" type="number" min="1" step="any"></input>
+            <input ref="price" name="price" type="number" min="1" step="any"></input>
           </div>
           <div>
             <label >Quantity </label>
             <input ref="quantity" name="quantity" type="number"></input>
           </div>
-          <input type="submit" value="Add" />
+          <Button type="submit" bsStyle="primary" value="Add">Add</Button>
         </form>
       </div>
     )
   }
+}
+
+AddItem.propTypes = {
+  name: PropTypes.string,
+  price: PropTypes.number,
+  quantity: PropTypes.number
 }

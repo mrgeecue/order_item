@@ -1,28 +1,28 @@
 {
   "items":[
     {
-      "itemName":"girls's shoe",
-      "itemPrice": 3.99,
+      "name":"girls's shoe",
+      "price": 3.99,
       "quantity": 4
     },
     {
-      "itemName":"boys's shoe",
-      "itemPrice": 3.99,
+      "name":"boys's shoe",
+      "price": 3.99,
       "quantity": 5
     },
     {
-      "itemName":"boy's socks",
-      "itemPrice": 1.99,
+      "name":"boy's socks",
+      "price": 1.99,
       "quantity": 2
     },
     {
-      "itemName":"women's raincoat",
-      "itemPrice": 54.99,
+      "name":"raincoat",
+      "price": 54.99,
       "quantity": 3
     },
     {
-      "itemName":"girl's polkadot raincoat",
-      "itemPrice": 24.99,
+      "name":"polkadot raincoat",
+      "price": 24.99,
       "quantity": 3
     }
   ]
